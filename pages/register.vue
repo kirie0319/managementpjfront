@@ -41,7 +41,7 @@ export default {
             name: this.newName,
             id: data.user.uid,
           }
-          this.$axios.post("http://127.0.0.1:8000/api/user/register", sendData);
+          this.$axios.post("https://sheltered-reaches-61763.herokuapp.com/api/user/register", sendData);
           return data.user.updateProfile({
             displayName: this.newName,
           }).then(() => {

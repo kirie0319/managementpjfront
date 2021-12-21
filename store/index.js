@@ -55,7 +55,7 @@ export const actions = {
     const sendData = {
       user_id: id
     }
-    const resDate = await this.$axios.post('http://127.0.0.1:8000/api/product', sendData);
+    const resDate = await this.$axios.post('https://sheltered-reaches-61763.herokuapp.com/api/product', sendData);
     console.log(resDate.data.data);
     commit('addProductList', resDate.data.data);
   },
@@ -64,7 +64,7 @@ export const actions = {
       user_id: id
     }
     console.log(sendData);
-    const resData = await this.$axios.post('http://127.0.0.1:8000/api/product/other', sendData);
+    const resData = await this.$axios.post('https://sheltered-reaches-61763.herokuapp.com/api/product/other', sendData);
     console.log(resData.data);
     commit('addOtherUserList', resData.data.others);
   }

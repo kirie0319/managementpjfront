@@ -67,7 +67,7 @@ export default {
       getUserData(){
         firebase.auth().onAuthStateChanged(async (user) => {
           if (user) {
-            const resData = await this.$axios.get('http://localhost:8000/api/user/' + user.uid);
+            const resData = await this.$axios.get('https://sheltered-reaches-61763.herokuapp.com/api/user/' + user.uid);
             this.user = resData.data.data;
             this.message = 'ログイン済みです'
             this.getProductList();
@@ -91,7 +91,7 @@ export default {
           name: productName,
           price: productPrice
         };
-        await this.$axios.post('http://localhost:8000/api/product/store', sendData);
+        await this.$axios.post('https://sheltered-reaches-61763.herokuapp.com/api/product/store', sendData);
         this.getProductList();
       },
       async updateProductList(product, editName, editPrice) {
@@ -104,7 +104,7 @@ export default {
           price: editPrice,
           user_id: product.user_id
         }
-        await this.$axios.post('http://localhost:8000/api/product/update', sendData);
+        await this.$axios.post('https://sheltered-reaches-61763.herokuapp.com/api/product/update', sendData);
         this.getProductList();
       },
       async deleteProduct(product) {
@@ -112,7 +112,7 @@ export default {
           id: product.id,
           user_id: product.user_id
         }
-        await this.$axios.post('http://localhost:8000/api/product/destroy', sendData);
+        await this.$axios.post('https://sheltered-reaches-61763.herokuapp.com/api/product/destroy', sendData);
         this.getProductList();
       },
       getProductList() {
@@ -125,7 +125,7 @@ export default {
         this.$store.dispatch('getOtherUserList', value);
       },
       async getUserList() {
-        const resData = await this.$axios.get('http://localhost:8000/api/list');
+        const resData = await this.$axios.get('https://sheltered-reaches-61763.herokuapp.com/api/list');
         console.log(resData.data);
         this.userList = resData.data.data;
       },
